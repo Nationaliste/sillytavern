@@ -22,6 +22,20 @@ module.exports = {
       }]
     } else if (installed) {
       if (running.start) {
+        // start.js stores the URL printed by ST in local.url (local.set step)
+        let local = info.local("start.js")
+        if (local && local.url) {
+          return [{
+            default: true,
+            icon: "fa-solid fa-rocket",
+            text: "Open Web UI",
+            href: local.url,
+          }, {
+            icon: 'fa-solid fa-terminal',
+            text: "Terminal",
+            href: "start.js",
+          }]
+        }
         return [{
           default: true,
           icon: 'fa-solid fa-terminal',
@@ -60,7 +74,7 @@ module.exports = {
           icon: "fa-regular fa-circle-xmark",
           text: "Reset",
           href: "reset.js",
-          confirm: "Are you sure you wish to reset SillyTavern?"
+          confirm: "Réinstaller les dépendances de SillyTavern ? (chats, cartes, sprites et extensions sont gardés)"
         }]
       }
     } else {
