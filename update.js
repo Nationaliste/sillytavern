@@ -13,8 +13,12 @@ module.exports = {
   }, {
     method: "shell.run",
     params: {
+      venv: "env",
       path: "app",
-      message: "npm i --no-audit --no-fund --quiet --omit=def"
+      env: {
+        NODE_ENV: "production"
+      },
+      message: "npm i --no-audit --no-fund --quiet --omit=dev"
     }
   }]
 }

@@ -1,2 +1,9 @@
 node_modules
 .DS_Store
+# artefacts locaux (audit 2026-07-04) — app clonée, sessions Claude, traces navigateur
+app
+.claude/
+.playwright-mcp/
+logs/
+cache/
+ENVIRONMENT
