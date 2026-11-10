@@ -2,6 +2,8 @@ node_modules
 .DS_Store
 # artefacts locaux (audit 2026-07-04) — app clonée, sessions Claude, traces navigateur
 app
+# .claude/ reste ignoré exprès : ce dépôt est public et ces notes (plans, registre, rapports) parlent du contenu
+# privé des parties. Une note de passation ne se committe pas ici : elle va dans le dossier de notes local.
 .claude/
 .playwright-mcp/
 logs/
