@@ -1,5 +1,7 @@
+// Port : celui de app/config.yaml (8000), fixe exprès. L'ancien SILLY_TAVERN_PORT = kernel.port() n'était jamais lu
+// (ST ne lit que les variables SILLYTAVERN_*). Un port qui change à chaque lancement changerait l'origine de la page,
+// et les réglages que les extensions gardent dans le localStorage du navigateur seraient perdus.
 module.exports = async (kernel) => {
-  const availablePort = await kernel.port()
   return {
     daemon: true,
     run: [
@@ -7,9 +9,6 @@ module.exports = async (kernel) => {
         method: "shell.run",
         params: {
           venv: "env",                // Edit this to customize the venv folder path
-          env: {
-            SILLY_TAVERN_PORT: availablePort,
-          },                   // Edit this to customize environment variables (see documentation)
           path: "app",                // Edit this to customize the path to start the shell from
           message: [
             "node server"
