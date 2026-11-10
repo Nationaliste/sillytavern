@@ -29,7 +29,8 @@ JavaScript (Node 18+) :
 ```javascript
 const base = 'http://127.0.0.1:8000';
 const r = await fetch(base + '/csrf-token');
-const cookie = r.headers.get('set-cookie');
+// La session de ST tient en DEUX cookies (valeur + signature .sig) : get('set-cookie') les fusionne et perd la signature.
+const cookie = r.headers.getSetCookie().map(c => c.split(';')[0]).join('; ');
 const { token } = await r.json();
 const chars = await fetch(base + '/api/characters/all', {
   method: 'POST',
